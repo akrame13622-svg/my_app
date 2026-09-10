@@ -38,4 +38,11 @@ jobs:
         run: |
           echo "y" | flet build apk
 
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flet-android-apk
+          path: build/
+
+
 
