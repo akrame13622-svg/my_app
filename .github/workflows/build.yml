@@ -19,14 +19,20 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Flet CLI
-        run: |
-          pip install flet
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+
+      - name: Install Flet CLI
+        run: |
+          pip install flet
 
       - name: Build APK
         run: |
@@ -37,3 +43,4 @@ jobs:
         with:
           name: flet-android-apk
           path: build/apk/*.apk
+
